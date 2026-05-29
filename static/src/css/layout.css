@@ -1,0 +1,32 @@
+.logo__header {
+    max-width: 50px;
+    border-radius: 100%;
+
+}
+
+.navbar__header {
+    background-color: rgb(148, 148, 148);
+    border-radius: 10px;
+    margin-top: 10px;
+    
+
+}
+
+header {
+        position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.icon__header {
+    max-width: 30px;
+
+}
+
+.items__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

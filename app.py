@@ -5,7 +5,7 @@ app.secret_key = 'Vexx777@'
 
 @app.route('/')
 def vexx_home():
-    return render_template("index.html")
+    return render_template("pagina_inicial.html")
 
 
 if __name__ == '__main__':
