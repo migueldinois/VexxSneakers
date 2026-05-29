@@ -8,9 +8,9 @@ def vexx_home():
     return render_template("pagina_inicial.html")
 
 
-@app.route('/categoria')
-def vexx_categoria():
-    return render_template("categoria.html")
+@app.route('/catalogo/categoria')
+def vexx_catalogo_categoria():
+    return render_template("categoria_unica.html")
 
 
 if __name__ == '__main__':
