@@ -8,5 +8,10 @@ def vexx_home():
     return render_template("pagina_inicial.html")
 
 
+@app.route('/categoria')
+def vexx_categoria():
+    return render_template("categoria.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True) 
