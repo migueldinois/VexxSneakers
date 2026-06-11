@@ -1,0 +1,16 @@
+.style-categoria {
+    height: 40vh;
+}
+
+
+@media (min-width: 768px) {
+    .style-categoria {
+        height: 50vh;
+    }
+}
+
+.img-fundo {
+    z-index: 1;
+    object-fit: cover;
+    object-position: center;
+}
