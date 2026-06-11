@@ -12,6 +12,9 @@ def vexx_home():
 def vexx_catalogo_categoria():
     return render_template("categoria_unica.html")
 
+@app.route('/cadastro')
+def vexx_cadastro():
+    return render_template("cadastro.html")
 
 if __name__ == '__main__':
     app.run(debug=True) 
