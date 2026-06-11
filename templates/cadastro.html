@@ -1,0 +1,57 @@
+{%block css_adicional%}
+<link rel="stylesheet" href="../static/src/css/cadastro.css">
+{%endblock%}
+
+{% extends "layout.html" %}
+{% block conteudo %}
+<div class="d-flex align-items-center justify-content-center min-vh-100 p-3">
+    <div class="vexx-card">
+        
+        <div class="vexx-mini-header">
+            <img src="../static/src/img/logo-sem-fundo-branca.png" alt="Vexx Logo" class="vexx-logo">
+            <span class="vexx-brand-name">
+                Vexx <span style="color: #CCFF00;">Sneakers</span>
+            </span>
+        </div>
+
+        <div class="p-4 p-sm-5">
+            <form action="#">
+                
+                <div class="mb-3">
+                    <label class="vexx-label">Nome Completo</label>
+                    <input type="text" class="form-control vexx-input" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="vexx-label">E-mail</label>
+                    <input type="email" class="form-control vexx-input" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="vexx-label">Telefone</label>
+                    <input type="tel" class="form-control vexx-input" placeholder="(00) 99999-9999">
+                </div>
+
+                <div class="mb-3">
+                    <label class="vexx-label">Endereço completo</label>
+                    <input type="text" class="form-control vexx-input" placeholder="Rua, número, bairro e cidade">
+                </div>
+
+                <div class="mb-4">
+                    <label class="vexx-label">Criar Senha</label>
+                    <input type="password" class="form-control vexx-input" placeholder="Mínimo 8 caracteres" required>
+                </div>
+
+                <button type="submit" class="btn vexx-btn w-100 text-uppercase">Criar minha conta</button>
+            </form>
+
+            <div class="text-center mt-4">
+                <p class="small text-muted mb-0">
+                    Já tem uma conta? <a href="/login" class="text-dark fw-bold text-decoration-none">Faça login</a>
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
