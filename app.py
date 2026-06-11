@@ -12,3 +12,9 @@ def vexx_home():
 def vexx_catalogo_categoria():
     return render_template("categoria_unica.html")
 
+@app.route('/produtounico')
+def vexx_produto_unico():
+    return render_template("produto_especificacoes.html")
+
+if __name__=="__main__":
+    app.run(debug=True)
