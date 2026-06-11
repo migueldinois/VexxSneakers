@@ -19,5 +19,10 @@ def vexx_cadastro():
     return render_template("cadastro.html")
 
 
+@app.route('/login')
+def vexx_login():
+    return render_template("login.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True) 
