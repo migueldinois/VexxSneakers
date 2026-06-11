@@ -1,21 +1,45 @@
-{%block css_adicional%}
+{% block css_adicional %}
 <link rel="stylesheet" href="../static/src/css/pagina_inicial.css">
-{%endblock%}
+{% endblock %}
 
+{% extends "layout.html" %}
+{% block conteudo %}
 
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="bg-secondary bg-opacity-25 p-3 rounded text-white text-center">
-            <img src="https://placehold.co/500x300" class="img-fluid rounded object-fit-cover w-100"
-                style="height: 520px;" alt="Produto 5">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Nome Produto</h5>
-                <p>R$ 0,00</p>
+<div class="container-fluid bg-black text-white py-5 min-vh-100 d-flex align-items-center justify-content-center">
+
+    <div class="row w-200 g-5 align-items-center" style="max-width: 2200px;">
+
+        <div class="col-md-6">
+            <div class="">
+                <img src="https://placehold.co/500x400" class="img-fluid rounded object-fit-fill w-100"
+                    style="height: 500px;" alt="Tênis Vexx">
             </div>
         </div>
+
+        <div class="col-md-6 ps-md-5">
+            <h1 class="display-4 fw-bold mb-2 text-uppercase tracking-wider">Tênis Vexx Street Aura Maxer</h1>
+
+            <h2 class="display-6 fw-normal mb-4 text-light">R$ 399,90</h2>
+
+            <p class="text-secondary mb-5 lead" style="max-width: 500px;">
+                Design minimalista, para pés que peçam alto conforto belico para sua caminhada, e também o mais melhor e
+                barato do momento
+            </p>
+
+            <div>
+                <button type="button"
+                    class="btn btn-light btn-lg rounded-0 px-5 py-3 fw-bold text-dark text-uppercase transition-all">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<button type="button" class="btn btn-success">Adicionar</button>
+<form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Escreva seu comentario aqui." />
+    <button class="btn btn-outline-success" type="submit">Enviar omentario</button>
+</form>
+
+{% endblock %}
