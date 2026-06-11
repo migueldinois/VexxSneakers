@@ -5,41 +5,79 @@
 {% extends "layout.html" %}
 {% block conteudo %}
 
-<div class="container-fluid bg-black text-white py-5 min-vh-100 d-flex align-items-center justify-content-center">
+<div class="container-fluid bg-black text-white py-5 min-vh-100 d-flex flex-column align-items-center justify-content-center">
 
-    <div class="row w-200 g-5 align-items-center" style="max-width: 2200px;">
+    <div class="row w-100 g-5 align-items-center mb-5" style="max-width: 1400px;">
 
+        <!-- Lado da Imagem -->
         <div class="col-md-6">
-            <div class="">
+            <div>
                 <img src="https://placehold.co/500x400" class="img-fluid rounded object-fit-fill w-100"
                     style="height: 500px;" alt="Tênis Vexx">
             </div>
         </div>
 
+        <!-- Lado das Informações do Produto -->
         <div class="col-md-6 ps-md-5">
             <h1 class="display-4 fw-bold mb-2 text-uppercase tracking-wider">Tênis Vexx Street Aura Maxer</h1>
 
             <h2 class="display-6 fw-normal mb-4 text-light">R$ 399,90</h2>
 
-            <p class="text-secondary mb-5 lead" style="max-width: 500px;">
-                Design minimalista, para pés que peçam alto conforto belico para sua caminhada, e também o mais melhor e
-                barato do momento
+            <!-- Ajuste ortográfico e tom mais profissional na descrição -->
+            <p class="text-secondary mb-4 lead" style="max-width: 500px;">
+                Design minimalista, feito para quem busca o máximo de conforto na caminhada diária. 
+                A união perfeita entre durabilidade, estilo urbano e o melhor custo-benefício do momento.
             </p>
 
-            <div>
+            <div class="mb-5">
                 <button type="button"
                     class="btn btn-light btn-lg rounded-0 px-5 py-3 fw-bold text-dark text-uppercase transition-all">
                     Adicionar ao carrinho
                 </button>
             </div>
+
+            ---
+
+            <!-- ÁREA DE COMENTÁRIO  -->
+            <div class="mt-4" style="max-width: 500px;">
+                <label for="comentario" class="form-label text-uppercase small tracking-wider text-secondary fw-bold mb-2">
+                    Deixe seu comentário aqui.
+                </label>
+                <form class="input-group" role="search">
+                    <input id="comentario" class="form-control bg-transparent text-white border-secondary rounded-0 py-3 px-3 shadow-none focus-ring-light" 
+                           type="text" 
+                           placeholder="O que você achou do Vexx Street?" 
+                           aria-label="Escreva seu comentário aqui." 
+                           style="border-right: none;">
+                    <button class="btn btn-outline-light rounded-0 px-4 text-uppercase fw-bold" 
+                            type="submit" 
+                            style="border-color: #6c757d;">
+                        Enviar Comentário
+                    </button>
+                </form>
+            </div>
+            <!-- ----------------------------------------- -->
+
         </div>
 
     </div>
 </div>
 
-<form class="d-flex" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Escreva seu comentario aqui." />
-    <button class="btn btn-outline-success" type="submit">Enviar omentario</button>
-</form>
+<div class="container bg-black text-white rounded-3 mt-5 pt-4 border-top border-secondary" style="max-width: 500px;">
+    <h3 class="h6 text-uppercase tracking-wider text-secondary fw-bold mb-4">
+        Avaliações dos Clientes (3)
+    </h3>
+
+    <div class="container mb-3 ">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-bold text-white">Lucas Smoke Cs</span>
+                <span class="text-warning small">★★★★☆</span>
+            </div>
+            <p class="text-secondary small mb-1">
+                "Muito bonito, meus pés me agradesceram depois que comecei a usar vexx sapatos, eles sao oque um pé de luxo pede e não um pé de sem graça simples, confortavel e super recomendo."
+            </p>
+            <span class="text-muted" style="font-size: 0.75rem;">Há 2 semanas</span>
+        </div>
+</div>
 
 {% endblock %}
