@@ -12,6 +12,3 @@ def vexx_home():
 def vexx_catalogo_categoria():
     return render_template("categoria_unica.html")
 
-
-if __name__ == '__main__':
-    app.run(debug=True) 
