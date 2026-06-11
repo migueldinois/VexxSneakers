@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from model.produtos import Produtos
+from model.categoria import Categoria
 
 app = Flask(__name__)
 app.secret_key = 'Vexx777@'
@@ -7,7 +8,8 @@ app.secret_key = 'Vexx777@'
 @app.route('/')
 def vexx_home():
     produtos = Produtos.recuperar_produtos()
-    return render_template("pagina_inicial.html", produtos = produtos)
+    categorias = Categoria.recuperar_categorias()
+    return render_template("pagina_inicial.html", produtos = produtos, categorias = categorias)
 
 
 @app.route('/catalogo/categoria')
