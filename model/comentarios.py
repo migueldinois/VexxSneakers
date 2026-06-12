@@ -2,15 +2,26 @@ from database.conexao import Conexao
 
 
 class Comentarios:
-    def adicionar_avaliacao():
+    def inserir_comentario(usuario, mensagem):
+        try:
+            conexao, cursor = Conexao.conectar()
 
-        conexao, cursor = Conexao.conectar()
+            cursor.execute("""
+                        INSERT INTO comentarios 
+                                (usuario, mensagem) 
+                        VALUES
+                                (%s, %s);
+                            """,
+                            [usuario, mensagem]
+                            )
 
-        cursor.execute('INSERT usuario, mensagem FROM comentarios')
+            conexao.commit()
+            conexao.close()
 
-        Comentarios = cursor.fetchall()
-
-        return Comentarios
+            return True
+        except Exception as erro:
+            print(erro)
+            return False
         
 
 
