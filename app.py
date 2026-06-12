@@ -18,6 +18,7 @@ def vexx_catalogo_categoria():
 
 @app.route('/cadastro')
 def vexx_cadastro():
+    
     return render_template("cadastro.html")
 
 @app.route('/cadastrar', methods=['POST'])
@@ -30,8 +31,6 @@ def cadastrar():
 
     Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha)
     return redirect("/")
-
-
 
 
 @app.route('/login')
@@ -50,8 +49,13 @@ def logar():
         return redirect("/")
     else:
         print("Usuario ou senha incorretos")
-        return redirect("/login")
+        return redirect("pagina_inicial.html")
     
+@app.route('/produtounico')
+def vexx_produto_unico():
+    
+    return render_template("categoria_unica.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True) 
