@@ -23,6 +23,7 @@ def vexx_cadastro():
 
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
+
     input_nome = request.form.get("nome")
     input_email = request.form.get("email")
     input_telefone = request.form.get("telefone")
@@ -32,13 +33,13 @@ def cadastrar():
     Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha)
     return redirect("/")
 
-
 @app.route('/login')
 def vexx_login():
     return render_template("login.html")
 
 @app.route('/logar', methods=['POST'])
 def logar():
+
     input_email = request.form.get("email")
     input_senha = request.form.get("senha")
 
@@ -55,6 +56,11 @@ def logar():
 def vexx_produto_unico():
     
     return render_template("categoria_unica.html")
+
+@app.route("/musica/post", methods=["POST"])
+def api_inserir_url_catalogo():
+
+    nome_categoria = request.form.get("")
 
 
 if __name__ == '__main__':
