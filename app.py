@@ -34,7 +34,6 @@ def vexx_comentarios():
     usuario = request.form.get("nome_usuario")
     comentario = request.form.get("comentario_usuario")
 
-    comentario = 
 
 
     return render_template("produto_especificacoes.html")
