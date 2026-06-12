@@ -31,6 +31,7 @@ def vexx_produto_unico():
 @app.route('/comentarios')
 def vexx_comentarios():
 
+
     
     return render_template("produto_especificacoes.html")
 
