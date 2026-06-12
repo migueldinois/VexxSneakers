@@ -28,5 +28,12 @@ def vexx_login():
 def vexx_produto_unico():
     return render_template("produto_especificacoes.html")
 
+@app.route('/comentarios')
+def vexx_comentarios():
+
+    
+    return render_template("produto_especificacoes.html")
+
+
 if __name__=="__main__":
     app.run(debug=True)
