@@ -26,3 +26,9 @@ CREATE TABLE produto (
     categoria INT NOT NULL,
     FOREIGN KEY (categoria) REFERENCES categorias(codigo)
 );
+
+CREATE TABLE comentarios(
+	usuario VARCHAR(50) NOT NULL,
+    mensagem VARCHAR(200) NOT NULL PRIMARY KEY
+
+);
