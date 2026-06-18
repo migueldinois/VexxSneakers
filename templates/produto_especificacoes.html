@@ -61,16 +61,23 @@
     <h3 class="h6 text-uppercase tracking-wider text-secondary fw-bold mb-4">
         Avaliações dos Clientes (3)
     </h3>
-
+{% if comentarios %}
+    {% for comentario in comentarios %}
     <div class="container mb-3 ">
             <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="fw-bold text-white" id="nome_usuario">Lucas Smoke Cs</span>
+                <span class="fw-bold text-white" id="nome_usuario">{{comentario.usuario}}</span>
             </div>
             <p class="text-secondary small mb-1" id="comentario_usuario">
-                "Muito bonito, meus pés me agradesceram depois que comecei a usar vexx sapatos, eles sao oque um pé de luxo pede e não um pé de sem graça simples, confortavel e super recomendo."
+                {{comentario.mensagem}}
             </p>
             <span class="text-muted" style="font-size: 0.75rem;">Há 2 semanas</span>
         </div>
+        {% endfor %}
+    {% else %}
+        <div class="container mb-3">
+            <p class="text-secondary small">Nenhuma avaliação encontrada.</p>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}
