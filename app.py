@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from model.produtos import Produtos
 from model.categoria import Categoria
 from model.usuarios import Usuarios
+from model.comentarios import Comentarios
 app = Flask(__name__)
 app.secret_key = 'Vexx777@'
 
@@ -38,24 +39,24 @@ def cadastrar():
 @app.route('/login')
 def vexx_login():
     return render_template("login.html")
+
 @app.route('/produtounico')
 def vexx_produto_unico():
     return render_template("produto_especificacoes.html")
 
-@app.route('/comentarios' methods=['GET'])
-def vexx_comentarios():
+@app.route('/comentarios', methods=['GET'])
+def pagina_comentarios():
 
     return render_template("produto_especificacoes.html")
 
-@app.route('/comentarios' methods=['POST'])
-def vexx_comentarios():
+@app.route('/comentar', methods=['POST'])
+def comentarios():
     texto = request.form.get("comentario")
 
-    
+    resposta = Comentarios.inserir_comentario(texto)
+    print(resposta)
 
-
-
-
+        
 @app.route('/logar', methods=['POST'])
 def logar():
     input_email = request.form.get("email")
