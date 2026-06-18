@@ -40,10 +40,19 @@ def vexx_login():
 def vexx_produto_unico():
     return render_template("produto_especificacoes.html")
 
-@app.route('/comentarios')
+@app.route('/comentarios' methods=['GET'])
 def vexx_comentarios():
 
-    comentario = request.form.get("comentario")
+    return render_template("produto_especificacoes.html")
+
+@app.route('/comentarios' methods=['POST'])
+def vexx_comentarios():
+    texto = request.form.get("comentario")
+
+    
+
+
+
 
 @app.route('/logar', methods=['POST'])
 def logar():
@@ -59,14 +68,7 @@ def logar():
         print("Usuario ou senha incorretos")
         return redirect("pagina_inicial.html")
     
-@app.route('/produtounico')
-def vexx_produto_unico():
-    
-    return render_template("categoria_unica.html")
 
-
-
-    return render_template("produto_especificacoes.html")
 
 
 if __name__=="__main__":
