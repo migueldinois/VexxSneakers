@@ -1,6 +1,7 @@
 from database.conexao import Conexao
 
 class Usuarios():
+    @staticmethod
     def cadastrar_usuario(nome, email, telefone, endereco, senha):
         try:
             conexao, cursor = Conexao.conectar()
