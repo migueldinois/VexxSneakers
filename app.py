@@ -61,6 +61,11 @@ def vexx_produto_unico(codigo_produto):
 
 @app.route('/comentar', methods=['POST'])
 def comentarios():
+    if 'usuario' not in session:
+        
+        return redirect('/login')
+    
+    
     texto = request.form.get("comentario")
 
     resposta = Comentarios.inserir_comentario(texto)
