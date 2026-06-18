@@ -34,3 +34,5 @@ CREATE TABLE comentarios (
     mensagem VARCHAR(200) NOT NULL,
     FOREIGN KEY (id_produto) REFERENCES produto(codigo)
 );
+SELECT usuarios.nome, comentarios.mensagem from comentarios
+INNER JOIN usuarios ON usuarios.nome = usuarios.nome;

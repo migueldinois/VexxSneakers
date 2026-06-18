@@ -49,8 +49,8 @@ def vexx_produto_unico():
 
 @app.route('/comentarios', methods=['GET'])
 def pagina_comentarios():
-
-    return render_template("produto_especificacoes.html")
+    dados_banco = Comentarios.visualizar_comentario()
+    return render_template("produto_especificacoes.html", comentarios=dados_banco)
 
 @app.route('/comentar', methods=['POST'])
 def comentarios():

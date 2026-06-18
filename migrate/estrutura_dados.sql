@@ -25,3 +25,5 @@ VALUES('Produto teste 3', 'Esse produto é um produto teste da Vexx Sneakers', 1
 INSERT INTO produto(nome, descricao, valor, foto, banner, categoria)
 VALUES('Produto teste 3', 'Esse produto é um produto teste da Vexx Sneakers', 430.00, 'https://picsum.photos/500/500', 'https://picsum.photos/200/300', 4)
 
+INSERT INTO produto(nome, descricao, valor, foto, banner, categoria)
+VALUES('Produto teste 3', 'Esse produto é um produto teste da Vexx Sneakers', 430.00, 'https://picsum.photos/500/500', 'https://picsum.photos/200/300', 5)

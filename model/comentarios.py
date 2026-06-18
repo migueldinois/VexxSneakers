@@ -24,5 +24,20 @@ class Comentarios:
             return False
         
 
+    def visualizar_comentario():
+        conexao, cursor = Conexao.conectar()
+
+        cursor.execute("""
+                        SELECT usuarios.nome, comentarios.mensagem FROM comentarios
+                       INNER JOIN usuarios ON usuarios.nome = usuarios.nome;
+
+                        """)
+        
+
+        mensagem = cursor.fetchall()
+        conexao.close()
+        return mensagem
+        
+
 
 
