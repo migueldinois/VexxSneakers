@@ -29,8 +29,11 @@ def cadastrar():
     input_telefone = request.form.get("telefone")
     input_cep = request.form.get("cep")
     input_senha = request.form.get("senha")
+    
+    resposta = Usuarios.verificar_usuario(input_email, input_senha)
 
-    if Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha):
+    if resposta is not None:
+        session["usuario_logado"] = resposta
         return redirect("/")
     else:
         return render_template("cadastro.html", erro="Erro ao cadastrar.")
