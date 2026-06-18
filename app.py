@@ -63,8 +63,10 @@ def logar():
     
 @app.route('/categoria_unica')
 def categoria_unica():
+
+    produtos = Produtos.recuperar_produtos()
     
-    return render_template("categoria_unica.html")
+    return render_template("categoria_unica.html", produtos = produtos)
 
 
 if __name__=="__main__":
