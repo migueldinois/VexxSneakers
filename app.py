@@ -19,7 +19,10 @@ def vexx_catalogo_categoria():
 @app.route('/cadastro')
 def vexx_cadastro():
     
-    return render_template("cadastro.html")
+    if session.get("usuario_logado") is not None:
+        return redirect('/')  
+    else:
+        return render_template("cadastro.html")  
 
 @app.route("/cadastrar", methods=["POST"])
 def cadastrar():
