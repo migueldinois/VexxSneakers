@@ -9,24 +9,19 @@
 
     <div class="row w-100 g-5 align-items-center mb-5" style="max-width: 1400px;">
 
-        <!-- Lado da Imagem -->
         <div class="col-md-6">
             <div>
-                <img src="https://placehold.co/500x400" class="img-fluid rounded object-fit-fill w-100"
+                <img src="{{produto.foto}}" class="img-fluid rounded object-fit-fill w-100"
                     style="height: 500px;" alt="Tênis Vexx">
             </div>
         </div>
 
-        <!-- Lado das Informações do Produto -->
         <div class="col-md-6 ps-md-5">
-            <h1 class="display-4 fw-bold mb-2 text-uppercase tracking-wider">Tênis Vexx Street Aura Maxer</h1>
+            <h1 class="display-4 fw-bold mb-2 text-uppercase tracking-wider">{{produto.nome}}</h1>
 
-            <h2 class="display-6 fw-normal mb-4 text-light">R$ 399,90</h2>
-
-            <!-- Ajuste ortográfico e tom mais profissional na descrição -->
+            <h2 class="display-6 fw-normal mb-4 text-light">R$ {{produto.valor}}</h2>
             <p class="text-secondary mb-4 lead" style="max-width: 500px;">
-                Design minimalista, feito para quem busca o máximo de conforto na caminhada diária. 
-                A união perfeita entre durabilidade, estilo urbano e o melhor custo-benefício do momento.
+                {{produto.descricao}}
             </p>
 
             <div class="mb-5">
@@ -36,7 +31,6 @@
                 </button>
             </div>
 
-            ---
 
             <!-- ÁREA DE COMENTÁRIO  -->
             <div class="mt-4" style="max-width: 500px;">
