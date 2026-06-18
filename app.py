@@ -23,6 +23,7 @@ def vexx_cadastro():
 
 @app.route("/cadastrar", methods=["POST"])
 def cadastrar():
+
     input_nome = request.form.get("nome")
     input_email = request.form.get("email")
     input_telefone = request.form.get("telefone")
@@ -34,10 +35,13 @@ def cadastrar():
     else:
         return render_template("cadastro.html", erro="Erro ao cadastrar.")
 
-
 @app.route('/login')
 def vexx_login():
-    return render_template("login.html")
+    if session.get("usuario_logado") is not None:
+        return redirect('/')  
+    else:
+        return render_template("login.html")  
+
 @app.route('/produtounico')
 def vexx_produto_unico():
     return render_template("produto_especificacoes.html")
@@ -53,20 +57,32 @@ def logar():
     input_senha = request.form.get("senha")
 
     resposta = Usuarios.verificar_usuario(input_email, input_senha)
-    print(resposta)
-    if resposta != None:
+    
+    if resposta is not None:
         session["usuario_logado"] = resposta
         return redirect("/")
     else:
-        print("Usuario ou senha incorretos")
-        return redirect("pagina_inicial.html")
-    
+        return render_template("login.html", erro="Usuário ou senha incorretos")
+
+
+@app.route('/logout')
+def logout():
+    session.pop("usuario_logado", None)
+    return redirect("/")
+
+
+
 @app.route('/categoria_unica')
 def categoria_unica():
 
     produtos = Produtos.recuperar_produtos()
     
     return render_template("categoria_unica.html", produtos = produtos)
+
+@app.route("/musica/post", methods=["POST"])
+def api_inserir_url_catalogo():
+
+    nome_categoria = request.form.get("")
 
 
 if __name__=="__main__":
