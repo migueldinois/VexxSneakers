@@ -2,17 +2,17 @@ from database.conexao import Conexao
 
 
 class Comentarios:
-    def inserir_comentario(usuario, mensagem):
+    def inserir_comentario(mensagem):
         try:
             conexao, cursor = Conexao.conectar()
 
             cursor.execute("""
                         INSERT INTO comentarios 
-                                (usuario, mensagem) 
+                                (mensagem) 
                         VALUES
-                                (%s, %s);
+                                (%s);
                             """,
-                            [usuario, mensagem]
+                            [mensagem]
                             )
 
             conexao.commit()
