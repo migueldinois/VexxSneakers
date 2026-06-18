@@ -36,6 +36,14 @@ def cadastrar():
 @app.route('/login')
 def vexx_login():
     return render_template("login.html")
+@app.route('/produtounico')
+def vexx_produto_unico():
+    return render_template("produto_especificacoes.html")
+
+@app.route('/comentarios')
+def vexx_comentarios():
+
+    comentario = request.form.get("comentario")
 
 @app.route('/logar', methods=['POST'])
 def logar():
@@ -57,5 +65,9 @@ def vexx_produto_unico():
     return render_template("categoria_unica.html")
 
 
-if __name__ == '__main__':
-    app.run(debug=True) 
+
+    return render_template("produto_especificacoes.html")
+
+
+if __name__=="__main__":
+    app.run(debug=True)

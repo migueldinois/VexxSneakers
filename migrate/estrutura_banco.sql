@@ -27,8 +27,8 @@ CREATE TABLE produto (
     FOREIGN KEY (categoria) REFERENCES categorias(codigo)
 );
 
-CREATE TABLE comentarios(
+CREATE TABLE comentarios (
+	id_mensagem INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	usuario VARCHAR(50) NOT NULL,
-    mensagem VARCHAR(200) NOT NULL PRIMARY KEY
-
+    mensagem VARCHAR(200) NOT NULL
 );
