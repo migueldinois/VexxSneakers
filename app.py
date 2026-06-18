@@ -21,7 +21,7 @@ def vexx_cadastro():
     
     return render_template("cadastro.html")
 
-@app.route('/cadastrar', methods=['POST'])
+@app.route("/cadastrar", methods=["POST"])
 def cadastrar():
 
     input_nome = request.form.get("nome")
@@ -30,12 +30,22 @@ def cadastrar():
     input_cep = request.form.get("cep")
     input_senha = request.form.get("senha")
 
-    Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha)
-    return redirect("/")
+    if Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha):
+        return redirect("/")
+    else:
+        return render_template("cadastro.html", erro="Erro ao cadastrar.")
 
 @app.route('/login')
 def vexx_login():
     return render_template("login.html")
+@app.route('/produtounico')
+def vexx_produto_unico():
+    return render_template("produto_especificacoes.html")
+
+@app.route('/comentarios')
+def vexx_comentarios():
+
+    comentario = request.form.get("comentario")
 
 @app.route('/logar', methods=['POST'])
 def logar():
@@ -52,8 +62,8 @@ def logar():
         print("Usuario ou senha incorretos")
         return redirect("pagina_inicial.html")
     
-@app.route('/produtounico')
-def vexx_produto_unico():
+@app.route('/categoria_unica')
+def categoria_unica():
     
     return render_template("categoria_unica.html")
 
@@ -63,5 +73,5 @@ def api_inserir_url_catalogo():
     nome_categoria = request.form.get("")
 
 
-if __name__ == '__main__':
-    app.run(debug=True) 
+if __name__=="__main__":
+    app.run(debug=True)
