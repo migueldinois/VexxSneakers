@@ -65,7 +65,8 @@
 
             <div class="position-relative text-white ps-5" style="z-index: 3;">
                 <h2 class="fs-1 fw-bold mb-3">{{categoria.nome}}</h2>
-                <a href="#" class="btn btn-light rounded-pill px-4 py-2 fw-semibold text-dark shadow-sm">Acessar -></a>
+                <a href="{{ url_for('categoria_unica', id_categoria=categoria.codigo) }}"
+                    class="btn btn-light rounded-pill px-4 py-2 fw-semibold text-dark shadow-sm">Acessar -></a>
             </div>
 
         </div>

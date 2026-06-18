@@ -87,10 +87,10 @@ def logout():
 
 
 
-@app.route('/categoria_unica')
-def categoria_unica():
+@app.route('/categoria/<id_categoria>')
+def categoria_unica(id_categoria):
 
-    produtos = Produtos.recuperar_produtos()
+    produtos = Produtos.recuperar_produtos_de_categoria(id_categoria)
     
     return render_template("categoria_unica.html", produtos = produtos)
 
@@ -99,6 +99,12 @@ def api_inserir_url_catalogo():
 
     nome_categoria = request.form.get("")
 
+@app.route('/produto/<id_categoria>')
+def produtos_detalhes(id_produto):
+
+    produto = Produtos.recuperar_produto_por_id(id_produto) 
+        
+    return render_template("produto_especificacoes", produto=produto)
 
 if __name__=="__main__":
     app.run(debug=True)
