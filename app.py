@@ -59,14 +59,10 @@ def logar():
         print("Usuario ou senha incorretos")
         return redirect("pagina_inicial.html")
     
-@app.route('/produtounico')
-def vexx_produto_unico():
+@app.route('/categoria_unica')
+def categoria_unica():
     
     return render_template("categoria_unica.html")
-
-
-
-    return render_template("produto_especificacoes.html")
 
 
 if __name__=="__main__":
