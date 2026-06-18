@@ -37,7 +37,11 @@ def cadastrar():
 
 @app.route('/login')
 def vexx_login():
-    return render_template("login.html")
+    if session.get("usuario_logado") is not None:
+        return redirect('/')  
+    else:
+        return render_template("login.html")  
+
 @app.route('/produtounico')
 def vexx_produto_unico():
     return render_template("produto_especificacoes.html")
@@ -49,19 +53,25 @@ def vexx_comentarios():
 
 @app.route('/logar', methods=['POST'])
 def logar():
-
     input_email = request.form.get("email")
     input_senha = request.form.get("senha")
 
     resposta = Usuarios.verificar_usuario(input_email, input_senha)
-    print(resposta)
-    if resposta != None:
+    
+    if resposta is not None:
         session["usuario_logado"] = resposta
         return redirect("/")
     else:
-        print("Usuario ou senha incorretos")
-        return redirect("pagina_inicial.html")
-    
+        return render_template("login.html", erro="Usuário ou senha incorretos")
+
+
+@app.route('/logout')
+def logout():
+    session.pop("usuario_logado", None)
+    return redirect("/")
+
+
+
 @app.route('/categoria_unica')
 def categoria_unica():
     

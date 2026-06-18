@@ -16,21 +16,21 @@
         </div>
 
         <div class="p-4 p-sm-5">
-            <form>
-                <div class="mb-2">
-                    <label class="vexx-label">Usuário</label>
-                    <input type="text" class="form-control vexx-input" placeholder="Digite seu usuário" id="usuario">
-                </div>
-
+            <form action="/logar" method="post">
                 <div class="mb-3">
                     <label class="vexx-label">E-mail</label>
-                    <input type="email" class="form-control vexx-input" placeholder="seu@email.com" id="email">
+                    <input type="email" class="form-control vexx-input" placeholder="seu@email.com" id="email"
+                        name="email">
                 </div>
 
                 <div class="mb-4">
                     <label class="vexx-label">Senha</label>
-                    <input type="password" class="form-control vexx-input" placeholder="••••••••" >
+                    <input type="password" class="form-control vexx-input" placeholder="••••••••" name="senha">
                 </div>
+
+                {% if erro %}
+                <p class="text-danger small">{{ erro }}</p>
+                {% endif %}
 
                 <button type="submit" class="btn vexx-btn w-100 text-uppercase">Entrar</button>
             </form>
