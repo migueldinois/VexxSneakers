@@ -52,15 +52,12 @@ def vexx_login():
 @app.route('/produtounico/<codigo_produto>')
 def vexx_produto_unico(codigo_produto):
     produto = Produtos.recuperar_produto_especifico(codigo_produto)
+    comentarios_produto = Comentarios.visualizar_comentario(codigo_produto)
     if produto is not None:
-        return render_template("produto_especificacoes.html", produto = produto)
+        return render_template("produto_especificacoes.html", produto = produto, comentarios=comentarios_produto)
     else: 
         return render_template("404.html")
 
-@app.route('/comentarios', methods=['GET'])
-def pagina_comentarios():
-    dados_banco = Comentarios.visualizar_comentario()
-    return render_template("produto_especificacoes.html", comentarios=dados_banco)
 
 @app.route('/comentar', methods=['POST'])
 def comentarios():
