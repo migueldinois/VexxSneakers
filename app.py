@@ -21,7 +21,7 @@ def vexx_cadastro():
     
     return render_template("cadastro.html")
 
-@app.route('/cadastrar', methods=['POST'])
+@app.route("/cadastrar", methods=["POST"])
 def cadastrar():
     input_nome = request.form.get("nome")
     input_email = request.form.get("email")
@@ -29,8 +29,10 @@ def cadastrar():
     input_cep = request.form.get("cep")
     input_senha = request.form.get("senha")
 
-    Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha)
-    return redirect("/")
+    if Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha):
+        return redirect("/")
+    else:
+        return render_template("cadastro.html", erro="Erro ao cadastrar.")
 
 
 @app.route('/login')
@@ -68,7 +70,10 @@ def logar():
         print("Usuario ou senha incorretos")
         return redirect("pagina_inicial.html")
     
-
+@app.route('/categoria_unica')
+def categoria_unica():
+    
+    return render_template("categoria_unica.html")
 
 
 if __name__=="__main__":

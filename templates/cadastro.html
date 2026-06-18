@@ -19,28 +19,30 @@
                 
                 <div class="mb-3">
                     <label class="vexx-label">Nome Completo</label>
-                    <input type="text" class="form-control vexx-input" placeholder="Digite seu nome completo" required id="nome">
+                    <input type="text" class="form-control vexx-input" placeholder="Digite seu nome completo" required id="nome" name="nome">
                 </div>
 
                 <div class="mb-3">
                     <label class="vexx-label">E-mail</label>
-                    <input type="email" class="form-control vexx-input" placeholder="seu@email.com" required id="email">
+                    <input type="email" class="form-control vexx-input" placeholder="seu@email.com" required id="email" name="email">
                 </div>
 
                 <div class="mb-3">
                     <label class="vexx-label">Telefone</label>
-                    <input type="tel" class="form-control vexx-input" placeholder="(00) 99999-9999" id="telefone">
+                    <input type="tel" class="form-control vexx-input" placeholder="(00) 99999-9999" id="telefone" name="telefone">
                 </div>
 
                 <div class="mb-3">
                     <label class="vexx-label">Endereço completo</label>
-                    <input type="text" class="form-control vexx-input" placeholder="Rua, número, bairro e cidade" id="cep">
+                    <input type="text" class="form-control vexx-input" placeholder="Rua, número, bairro e cidade" id="cep" name="cep">
                 </div>
 
                 <div class="mb-4">
                     <label class="vexx-label">Criar Senha</label>
-                    <input type="password" class="form-control vexx-input" placeholder="Mínimo 8 caracteres" required id="senha">
+                    <input type="password" class="form-control vexx-input" placeholder="Mínimo 8 caracteres" required id="senha" name="senha">
                 </div>
+
+                <p>{{erro}}</p>
 
                 <button type="submit" class="btn vexx-btn w-100 text-uppercase">Criar minha conta</button>
             </form>
