@@ -14,3 +14,10 @@
     object-fit: cover;
     object-position: center;
 }
+
+.card_produto{
+    transition: 0.3s ease-in-out;
+}
+.card_produto:hover{
+    opacity: 40%;
+}
