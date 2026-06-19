@@ -13,11 +13,6 @@ def vexx_home():
     categorias = Categoria.recuperar_categorias()
     return render_template("pagina_inicial.html", produtos = produtos, categorias = categorias)
 
-
-@app.route('/catalogo/categoria')
-def vexx_catalogo_categoria():
-    return render_template("categoria_unica.html")
-
 @app.route('/cadastro')
 def vexx_cadastro():
     
@@ -102,10 +97,14 @@ def logout():
 @app.route('/categoria/<id_categoria>')
 def categoria_unica(id_categoria):
     categoria = Categoria.recuperar_categoria_por_id(id_categoria)
-    nome_categoria = categoria["nome"]
-    produtos = Produtos.recuperar_produtos_de_categoria(id_categoria)
     
-    return render_template("categoria_unica.html", produtos=produtos, nome_categoria=nome_categoria)
+    produtos = Produtos.recuperar_produtos_de_categoria(id_categoria)
+    if categoria is not None:
+        nome_categoria = categoria["nome"]
+        return render_template("categoria_unica.html", produtos=produtos, nome_categoria=nome_categoria)
+    else: 
+        return render_template("404.html")
+    
 
 @app.route('/politica_privacidade')
 def politica_privacidade():
