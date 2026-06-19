@@ -36,8 +36,8 @@ def cadastrar():
     
     resposta = Usuarios.cadastrar_usuario(input_nome, input_email, input_telefone, input_cep, input_senha)
 
-    if resposta is not None:
-        session["usuario_logado"] = resposta
+    if resposta:
+        session["usuario_logado"] = {"nome": input_nome, "email": input_email}
         return redirect("/")
     else:
         return render_template("cadastro.html", erro="Erro ao cadastrar.")
@@ -59,12 +59,22 @@ def vexx_produto_unico(codigo_produto):
         return render_template("404.html")
 
 
-@app.route('/comentar', methods=['POST'])
-def comentarios():
+@app.route('/comentar/<codigo_produto>', methods=['POST'])
+def comentarios(codigo_produto):
+    if session.get("usuario_logado") is None:
+        return redirect('/login')
+        
+    usuario = session["usuario_logado"]
+    nome_usuario = usuario["nome"]
+    
     texto = request.form.get("comentario")
-
-    resposta = Comentarios.inserir_comentario(texto)
-    print(resposta)
+    if texto:
+        Comentarios.inserir_comentario(codigo_produto, nome_usuario, texto)
+        return redirect(f"/produtounico/{codigo_produto}")
+    else:
+        produto = Produtos.recuperar_produto_especifico(codigo_produto)
+        comentarios_produto = Comentarios.visualizar_comentario(codigo_produto)
+        return render_template('produto_especificacoes.html', erro='Não foi possível enviar seu comentário.', produto=produto, comentarios=comentarios_produto)
 
         
 @app.route('/logar', methods=['POST'])
