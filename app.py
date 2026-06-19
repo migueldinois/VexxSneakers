@@ -49,7 +49,7 @@ def vexx_login():
     else:
         return render_template("login.html")  
 
-@app.route('/produtounico/<codigo_produto>')
+@app.route('/produto/<codigo_produto>')
 def vexx_produto_unico(codigo_produto):
     produto = Produtos.recuperar_produto_especifico(codigo_produto)
     comentarios_produto = Comentarios.visualizar_comentario(codigo_produto)
@@ -70,7 +70,7 @@ def comentarios(codigo_produto):
     texto = request.form.get("comentario")
     if texto:
         Comentarios.inserir_comentario(codigo_produto, nome_usuario, texto)
-        return redirect(f"/produtounico/{codigo_produto}")
+        return redirect(f"/produto/{codigo_produto}")
     else:
         produto = Produtos.recuperar_produto_especifico(codigo_produto)
         comentarios_produto = Comentarios.visualizar_comentario(codigo_produto)
@@ -98,15 +98,21 @@ def logout():
 
 
 
-@app.route('/categoria_unica')
-def categoria_unica():
+@app.route('/categoria/<id_categoria>')
+def categoria_unica(id_categoria):
+    categoria = Categoria.recuperar_categoria_por_id(id_categoria)
+    nome_categoria = categoria["nome"]
+    produtos = Produtos.recuperar_produtos_de_categoria(id_categoria)
     
-    return render_template("categoria_unica.html")
+    return render_template("categoria_unica.html", produtos=produtos, nome_categoria=nome_categoria)
 
-@app.route("/musica/post", methods=["POST"])
-def api_inserir_url_catalogo():
+@app.route('/politica_privacidade')
+def politica_privacidade():
+    return render_template('politica_privacidade.html')
 
-    nome_categoria = request.form.get("")
+@app.route('/termos_uso')
+def termos_uso():
+    return render_template('termos_uso.html')
 
 
 if __name__=="__main__":
