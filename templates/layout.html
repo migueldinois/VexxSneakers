@@ -5,13 +5,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vexx Sneakers</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../static/src/css/layout.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
+    <style>
+        .cart-offcanvas {
+            background-color: #a6a6a6 !important;
+            color: #000000;
+            border-left: none;
+            width: 380px !important;
+        }
+
+        .cart-header-title {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .cart-items-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .cart-item-card {
+            background-color: #d9d9d9;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .cart-item-img-container {
+            background-color: #ececec;
+            width: 95px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: #555555;
+            text-transform: uppercase;
+        }
+
+        .cart-item-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-body {
+            padding: 10px 12px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cart-item-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 2px 0;
+            line-height: 1.2;
+        }
+
+        .cart-item-price {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 0 6px 0;
+        }
+
+        .quantity-control {
+            display: inline-flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 6px;
+            padding: 2px;
+            max-width: 90px;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #000000;
+            cursor: pointer;
+        }
+
+        .quantity-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0 6px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .cart-btn-delete {
+            background: none;
+            border: none;
+            padding: 0 15px;
+            color: #000000;
+            transition: color 0.2s, transform 0.1s;
+        }
+
+        .cart-btn-delete:hover {
+            color: #dc3545;
+            transform: scale(1.05);
+        }
+
+        .cart-summary-footer {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .cart-total-label {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+        }
+
+        .btn-checkout-vexx {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            padding: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-checkout-vexx:hover {
+            background-color: #222222;
+            border-color: #222222;
+            color: #ffffff;
+        }
+
+        .botao_voltar {
+            background-color: transparent;
+            color: #a3a3a3;
+            border: 1px solid #333333;
+            padding: 10px 24px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: fit-content;
+
+        }
+
+        .botao_voltar:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #a3a3a3 !important; 
+            transition: color 0.3s ease; 
+        }
+
+        /* A tag !importante força o navegador a aplicar uma propriedade de estilo específica ignornado a irarquia */
+        .navbar-nav .nav-link:hover {
+            color: #ffffff !important; 
+        }
+
+    </style>
 
     {% block css_adicional %}{% endblock %}
 </head>
@@ -25,11 +203,12 @@
                     <img class="logo__header" src="../static/src/img/logo-sem-fundo-branca.png" alt="Logo">
                 </a>
                 <div class="d-flex align-items-center order-lg-last gap-2">
-                    
-                    <button type="button" class="btn rounded-circle p-2" aria-label="Ícone Carrinho" data-bs-toggle="offcanvas" data-bs-target="#carrinhoVexx" aria-controls="carrinhoVexx">
-                        <img class="icon__header" src="../static/src/img/cart.svg" alt="Icone Carrinho">
+
+                    <button type="button" class="btn rounded-circle p-2" aria-label="Ícone Carrinho"
+                        data-bs-toggle="offcanvas" data-bs-target="#carrinhoVexx" aria-controls="carrinhoVexx">
+                        <img class="icon__header icon__cart" src="../static/src/img/cart.svg" alt="Icone Carrinho">
                     </button>
-                    
+
                     <button type="button" class="btn rounded-circle p-2" aria-label="Ícone Perfil">
                         <a href="/login">
                             <img class="icon__header" src="../static/src/img/profile.svg" alt="Icone Perfil">
@@ -50,14 +229,31 @@
                 </div>
             </div>
         </nav>
+
+        <!-- request path faz que se estiver na página inicial o botão não apareça,
+             e o referrer mostra se o usuario veio direto de um link ou se foi navegando entre as paginas,
+             e por final o request.host verifica o link atua da página 
+        -->
+
+        {% if request.referrer and request.host in request.referrer and request.path != '/' %} 
+        <div class="col-12 mb-2">
+            <button onclick="history.back()" class="botao_voltar d-inline-flex align-items-center gap-2">
+                &larr; Voltar 
+            </button>
+        </div>
+        {% endif %}
+
     </header>
 
-    <div class="offcanvas offcanvas-end bg-secondary text-dark" tabindex="-1" id="carrinhoVexx" aria-labelledby="carrinhoVexxLabel">
+
+    <div class="offcanvas offcanvas-end bg-secondary text-dark" tabindex="-1" id="carrinhoVexx"
+        aria-labelledby="carrinhoVexxLabel">
         <div class="offcanvas-header border-bottom border-dark py-3">
             <h5 class="offcanvas-title text-uppercase fw-bold fs-4 text-black" id="carrinhoVexxLabel">Seu Carrinho</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
         </div>
-        
+
         <div class="offcanvas-body d-flex flex-column justify-content-between">
             <div class="flex-grow-1 overflow-auto pe-1" id="cart-items">
                 
@@ -97,7 +293,8 @@
             </div>
         </div>
     </footer>
-    <script src="../static/src/js/carrinho.js"></script>
+    <script src="../static/src/js/alerts.js" defer></script>
+    <script src="../static/src/js/carrinho.js" defer></script>
 
 </body>
 
