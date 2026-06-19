@@ -106,7 +106,13 @@ def categoria_unica(id_categoria):
     
     return render_template("categoria_unica.html", produtos=produtos, nome_categoria=nome_categoria)
 
+@app.route('/politica_privacidade')
+def politica_privacidade():
+    return render_template('politica_privacidade.html')
 
+@app.route('/termos_uso')
+def termos_uso():
+    return render_template('termos_uso.html')
 
 
 if __name__=="__main__":
