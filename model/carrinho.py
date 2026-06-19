@@ -5,12 +5,12 @@ class Carrinho():
     def recuperar_carrinho(usuario: str) -> list:
         conexao, cursor = Conexao.conectar()
         cursor.execute("""
-            SELECT c.cod_carrinho, u.usuario, i.quantidade, p.produto, p.preco, p.foto
+            SELECT c.cod_carrinho, u.email, i.quantidade, p.nome, p.valor, p.foto
             FROM carrinhos c
-            INNER JOIN usuarios u ON c.usuario = u.usuario
+            INNER JOIN usuarios u ON c.usuario = u.email
             INNER JOIN itens_carrinho i ON c.cod_carrinho = i.cod_carrinho
-            INNER JOIN produtos p ON p.codigo = i.cod_produto
-            WHERE u.usuario = %s AND c.finalizado = 0
+            INNER JOIN produto p ON p.codigo = i.cod_produto
+            WHERE u.email = %s AND c.finalizado = 0
         """, [usuario])
         produtos = cursor.fetchall()
         conexao.close()

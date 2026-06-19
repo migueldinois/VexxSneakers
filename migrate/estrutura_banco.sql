@@ -34,15 +34,13 @@ CREATE TABLE comentarios (
     mensagem VARCHAR(200) NOT NULL,
     FOREIGN KEY (id_produto) REFERENCES produto(codigo)
 );
-SELECT usuarios.nome, comentarios.mensagem from comentarios
-INNER JOIN usuarios ON usuarios.nome = usuarios.nome;
 
 CREATE TABLE IF NOT EXISTS carrinhos (
 	cod_carrinho INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(32),
     data datetime default current_timestamp,
     finalizado bool,
-    constraint fk_carrinho_usuario FOREIGN KEY (usuario) REFERENCES usuarios(usuario)
+    constraint fk_carrinho_usuario FOREIGN KEY (usuario) REFERENCES usuarios(email)
 );
     
 CREATE TABLE IF NOT EXISTS itens_carrinho (
@@ -51,5 +49,5 @@ CREATE TABLE IF NOT EXISTS itens_carrinho (
     cod_produto int,
     quantidade int default 1,
     constraint fk_carrinho_carrinhos foreign key (cod_carrinho) references carrinhos(cod_carrinho),
-    constraint fk_itens_carrinho_itens foreign key (cod_produto) references produtos (codigo)
+    constraint fk_itens_carrinho_itens foreign key (cod_produto) references produto (codigo)
 );

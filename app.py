@@ -3,6 +3,7 @@ from model.produtos import Produtos
 from model.categoria import Categoria
 from model.usuarios import Usuarios
 from model.comentarios import Comentarios
+from model.carrinho import Carrinho
 app = Flask(__name__)
 app.secret_key = 'Vexx777@'
 
@@ -119,7 +120,7 @@ def termos_uso():
 @app.route("/api/get/carrinho", methods=["GET"])
 def api_get_carrinho():
     if "usuario_logado" in session:
-        login = session["usuario_logado"]["usuario"]
+        login = session["usuario_logado"]["email"]
         # Pegando o carrinoh e mandando com json
         carrinho = Carrinho.recuperar_carrinho(login)
         return jsonify(carrinho), 200
@@ -134,7 +135,7 @@ def api_adicionar_item_carrinho():
         cod_produto = dados.get("cod_produto")
         quantidade = dados.get("quantidade")
         
-        login = session["usuario_logado"]["usuario"]
+        login = session["usuario_logado"]["email"]
         
         cod_carrinho = Carrinho.verificar_carrinho_aberto(login)
         # Se nao tiver codigo carrinho, cria um novo
@@ -156,7 +157,7 @@ def api_deletar_item_carrinho():
         dados = request.get_json()
         cod_item_carrinho = dados.get("cod_item_carrinho")
         
-        login = session["usuario_logado"]["usuario"]
+        login = session["usuario_logado"]["email"]
 
         cod_carrinho = Carrinho.verificar_carrinho_aberto(login)
                 
