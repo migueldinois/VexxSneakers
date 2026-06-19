@@ -15,6 +15,19 @@ VALUES('/static/src/img/banners_categorias/banner_esportes.png', 'Esportes');
 INSERT INTO produto(nome, descricao, valor, foto, banner, categoria)
 VALUES('Vexx Kid Drip Colorful', 'Tênis infantil estilo chunky colorido super confortável para o dia a dia.', 249.90, '/static/src/img/produtos/kid_colorful_foto.png', '/static/src/img/produtos/kid_colorful_banner.png', 1);
 
+INSERT INTO produto (nome, descricao, valor, foto, banner, categoria)
+VALUES (
+    'Vexx La Casa de Papel', 
+    'Tênis de alto conforto e macio.', 
+    789.90, 
+    '/static/src/img/produtos/godo2_colorful_banner.png', 
+    '/static/src/img/produtos/godo2_colorful_banner.png', 
+    5
+);
+
+INSERT INTO categorias(imagem, nome) 
+VALUES('/static/src/img/produtos/godo_colorful_banner.png', 'Para Ratos');
+
 INSERT INTO produto(nome, descricao, valor, foto, banner, categoria)
 VALUES('Vexx Kid Track Pastel', 'Modelo streetwear mini em tons pastel com amortecimento premium.', 269.90, '/static/src/img/produtos/kid_pastel_foto.png', '/static/src/img/produtos/kid_pastel_banner.png', 1);
 
