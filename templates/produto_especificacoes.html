@@ -11,7 +11,6 @@
 </style>
 
 <div
-   
     class="container-fluid bg-black text-white py-5 min-vh-100 d-flex flex-column align-items-center justify-content-center">
 
     <div class="row w-100 g-5 align-items-center mb-5" style="max-width: 1400px;">
@@ -54,10 +53,12 @@
                         class="form-control bg-transparent text-white border-secondary rounded-0 py-3 px-3 shadow-none focus-ring-light"
                         type="text" placeholder="O que você achou do Vexx Street?"
                         aria-label="Escreva seu comentário aqui." style="border-right: none;" required>
+
                     <button class="btn btn-outline-light rounded-0 px-4 text-uppercase fw-bold" type="submit"
                         style="border-color: #6c757d;">
                         Enviar Comentário
                     </button>
+
                     {% if erro %}
                     <div class="alert alert-danger">{{ erro }}</div>
                     {% endif %}
@@ -83,8 +84,9 @@
     {% if comentarios %}
     {% for comentario in comentarios %}
     <div class="container mb-3 ">
-        <div class="d-flex justify-content-between align-items-center mb-1">
-            <span class="fw-bold text-white" id="nome_usuario">{{comentario.usuario}}</span>
+        <div class="d-flex justify-content-start gap-1 align-items-center mb-1">
+            <img class="icon__header" src="../static/src/img/profile.svg" alt="Icone Perfil">
+            <span class="fw-bold text-white " id="nome_usuario">{{comentario.usuario}}</span>
         </div>
         <p class="text-secondary small mb-1" id="comentario_usuario">
             {{comentario.mensagem}}

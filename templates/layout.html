@@ -166,19 +166,28 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin: 30px;
-
             transition: all 0.3s ease;
             cursor: pointer;
             width: fit-content;
 
         }
 
-
         .botao_voltar:hover {
             background-color: #ffffff;
             color: #000000;
             border-color: #ffffff;
         }
+
+        .navbar-nav .nav-link {
+            color: #a3a3a3 !important; 
+            transition: color 0.3s ease; 
+        }
+
+        /* A tag !importante força o navegador a aplicar uma propriedade de estilo específica ignornado a irarquia */
+        .navbar-nav .nav-link:hover {
+            color: #ffffff !important; 
+        }
+
     </style>
 
     {% block css_adicional %}{% endblock %}
