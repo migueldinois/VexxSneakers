@@ -10,24 +10,25 @@
 
     <div class="container">
 
-        {% for produto in produtos %}
-        <h2 class="text-center text-white mb-5 pt-5">{{ produto.categoria }}</h2>
+        <h2 class="text-center text-white mb-5 pt-5">{{ nome_categoria }}</h2>
 
 
         <div class="row g-4 mb-4">
-            <div class="col-4">
+            {% for produto in produtos %}
+            <div class="col-12 col-md-4">
                 <div class="bg-secondary bg-opacity-25 p-3 rounded text-white text-center">
                     <img src="{{ produto.foto }}" class="img-fluid rounded object-fit-cover w-100"
                         style="height: 220px;" alt="{{ produto.nome }}">
                     <p class="pb-3 mt-3 mb-0 fs-6 text-light opacity-75">{{ produto.nome }}</p>
 
-                    <a href="/produto/{{ produto.id }}" class="btn btn-light w-100 py-2 rounded-pill fw-bold text-dark text-uppercase shadow-sm focus-ring focus-ring-light">
+                    <a href="/produto/{{ produto.codigo }}" class="btn btn-light w-100 py-2 rounded-pill fw-bold text-dark text-uppercase shadow-sm focus-ring focus-ring-light">
                         Comprar
                     </a>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+       
 
     </div>
 </div>
