@@ -158,10 +158,13 @@ def api_deletar_item_carrinho():
         cod_item_carrinho = dados.get("cod_item_carrinho")
         
         login = session["usuario_logado"]["email"]
-
-        cod_carrinho = Carrinho.verificar_carrinho_aberto(login)
-                
-        #  se esxister carrinho e o codigo do carrinho for true, entao deleta o item do carrinho
+    
+        carrinho_atual = Carrinho.recuperar_carrinho(login)
+        
+        cod_carrinho = 0
+        if carrinho_atual and len(carrinho_atual) > 0:
+            cod_carrinho = carrinho_atual[0].get("cod_carrinho")
+            
         if cod_carrinho and Carrinho.deletar_item_carrinho(cod_item_carrinho, cod_carrinho):
             return jsonify({"message":"Deletado com sucesso"}), 200
         

@@ -70,13 +70,13 @@ class Carrinho():
             conexao, cursor = Conexao.conectar()
             cursor.execute("""
                 DELETE FROM itens_carrinho 
-                WHERE cod_item_carrinho = %s AND cod_carrinho = %s
-            """, [cod_item_carrinho, cod_carrinho])
+                WHERE cod_itens_carrinho = %s AND cod_carrinho = %s
+            """, [cod_item_carrinho, cod_carrinho]) 
             conexao.commit()
             conexao.close()
             return True        
         except Exception as erro:
             print(erro)
             return False
+            
         
-    
