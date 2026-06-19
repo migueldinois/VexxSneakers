@@ -19,7 +19,7 @@
             border-left: none;
             width: 380px !important;
         }
-        
+
         .cart-header-title {
             font-family: 'Impact', 'Arial Black', sans-serif;
             text-transform: uppercase;
@@ -52,7 +52,7 @@
             color: #555555;
             text-transform: uppercase;
         }
-        
+
         .cart-item-img-container img {
             width: 100%;
             height: 100%;
@@ -118,7 +118,7 @@
             color: #000000;
             transition: color 0.2s, transform 0.1s;
         }
-        
+
         .cart-btn-delete:hover {
             color: #dc3545;
             transform: scale(1.05);
@@ -149,11 +149,34 @@
             letter-spacing: 0.5px;
             transition: all 0.2s ease;
         }
-        
+
         .btn-checkout-vexx:hover {
             background-color: #222222;
             border-color: #222222;
             color: #ffffff;
+        }
+
+        .botao_voltar {
+            background-color: transparent;
+            color: #a3a3a3;
+            border: 1px solid #333333;
+            padding: 10px 24px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 30px;
+
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: fit-content;
+
+        }
+
+
+        .botao_voltar:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
         }
     </style>
 
@@ -169,11 +192,12 @@
                     <img class="logo__header" src="../static/src/img/logo-sem-fundo-branca.png" alt="Logo">
                 </a>
                 <div class="d-flex align-items-center order-lg-last gap-2">
-                    
-                    <button type="button" class="btn rounded-circle p-2" aria-label="Ícone Carrinho" data-bs-toggle="offcanvas" data-bs-target="#carrinhoVexx" aria-controls="carrinhoVexx">
+
+                    <button type="button" class="btn rounded-circle p-2" aria-label="Ícone Carrinho"
+                        data-bs-toggle="offcanvas" data-bs-target="#carrinhoVexx" aria-controls="carrinhoVexx">
                         <img class="icon__header" src="../static/src/img/cart.svg" alt="Icone Carrinho">
                     </button>
-                    
+
                     <button type="button" class="btn rounded-circle p-2" aria-label="Ícone Perfil">
                         <a href="/login">
                             <img class="icon__header" src="../static/src/img/profile.svg" alt="Icone Perfil">
@@ -194,17 +218,34 @@
                 </div>
             </div>
         </nav>
+
+        <!-- request path faz que se estiver na página inicial o botão não apareça,
+             e o referrer mostra se o usuario veio direto de um link ou se foi navegando entre as paginas,
+             e por final o request.host verifica o link atua da página 
+        -->
+
+        {% if request.referrer and request.host in request.referrer and request.path != '/' %} 
+        <div class="col-12 mb-2">
+            <button onclick="history.back()" class="botao_voltar d-inline-flex align-items-center gap-2">
+                &larr; Voltar 
+            </button>
+        </div>
+        {% endif %}
+
     </header>
 
-    <div class="offcanvas offcanvas-end cart-offcanvas" tabindex="-1" id="carrinhoVexx" aria-labelledby="carrinhoVexxLabel">
+
+    <div class="offcanvas offcanvas-end cart-offcanvas" tabindex="-1" id="carrinhoVexx"
+        aria-labelledby="carrinhoVexxLabel">
         <div class="offcanvas-header border-bottom border-dark py-3">
             <h5 class="offcanvas-title cart-header-title" id="carrinhoVexxLabel">Seu Carrinho</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
         </div>
-        
+
         <div class="offcanvas-body d-flex flex-column justify-content-between">
             <div class="cart-items-wrapper">
-                
+
                 <div class="cart-item-card d-flex align-items-center justify-content-between mb-3">
                     <div class="d-flex align-items-center flex-grow-1">
                         <div class="cart-item-img-container">
@@ -213,7 +254,7 @@
                         <div class="cart-item-body">
                             <p class="cart-item-name">Nome do tenis</p>
                             <p class="cart-item-price">R$2999,99</p>
-                            
+
                             <div class="quantity-control">
                                 <button type="button" class="quantity-btn" title="Diminuir">-</button>
                                 <span class="quantity-value">1</span>
@@ -221,10 +262,12 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button type="button" class="cart-btn-delete" aria-label="Deletar produto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
                         </svg>
                     </button>
                 </div>

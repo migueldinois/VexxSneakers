@@ -5,14 +5,20 @@
 {% extends "layout.html" %}
 {% block conteudo %}
 
-<div class="container-fluid bg-black text-white py-5 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+<style>
+
+
+</style>
+
+<div
+    class="container-fluid bg-black text-white py-5 min-vh-100 d-flex flex-column align-items-center justify-content-center">
 
     <div class="row w-100 g-5 align-items-center mb-5" style="max-width: 1400px;">
 
         <div class="col-md-6">
             <div>
-                <img src="{{produto.foto}}" class="img-fluid rounded object-fit-fill w-100"
-                    style="height: 500px;" alt="Tênis Vexx">
+                <img src="{{produto.foto}}" class="img-fluid rounded object-fit-fill w-100" style="height: 500px;"
+                    alt="Tênis Vexx">
             </div>
         </div>
 
@@ -34,19 +40,18 @@
 
             <!-- ÁREA DE COMENTÁRIO  -->
             <div class="mt-4" style="max-width: 500px;">
-                <label for="comentario" class="form-label text-uppercase small tracking-wider text-secondary fw-bold mb-2">
+                <label for="comentario"
+                    class="form-label text-uppercase small tracking-wider text-secondary fw-bold mb-2">
                     Deixe seu comentário aqui.
                 </label>
                 {% if session.get("usuario_logado") %}
                 <form class="input-group" action="/comentar/{{produto.codigo}}" method="POST">
-                    <input id="comentario" name="comentario" class="form-control bg-transparent text-white border-secondary rounded-0 py-3 px-3 shadow-none focus-ring-light" 
-                           type="text" 
-                           placeholder="O que você achou do Vexx Street?" 
-                           aria-label="Escreva seu comentário aqui." 
-                           style="border-right: none;" required>
-                    <button class="btn btn-outline-light rounded-0 px-4 text-uppercase fw-bold" 
-                            type="submit" 
-                            style="border-color: #6c757d;">
+                    <input id="comentario" name="comentario"
+                        class="form-control bg-transparent text-white border-secondary rounded-0 py-3 px-3 shadow-none focus-ring-light"
+                        type="text" placeholder="O que você achou do Vexx Street?"
+                        aria-label="Escreva seu comentário aqui." style="border-right: none;" required>
+                    <button class="btn btn-outline-light rounded-0 px-4 text-uppercase fw-bold" type="submit"
+                        style="border-color: #6c757d;">
                         Enviar Comentário
                     </button>
                     {% if erro %}
@@ -55,7 +60,8 @@
                 </form>
                 {% else %}
                 <div class="p-3 border border-secondary text-center">
-                    <p class="text-secondary mb-0">Você precisa estar logado para comentar. <a href="/login" class="text-white fw-bold text-decoration-underline">Fazer Login</a></p>
+                    <p class="text-secondary mb-0">Você precisa estar logado para comentar. <a href="/login"
+                            class="text-white fw-bold text-decoration-underline">Fazer Login</a></p>
                 </div>
                 {% endif %}
             </div>
@@ -70,22 +76,22 @@
     <h3 class="h6 text-uppercase tracking-wider text-secondary fw-bold mb-4">
         Avaliações dos Clientes ({{ comentarios|length }})
     </h3>
-{% if comentarios %}
+    {% if comentarios %}
     {% for comentario in comentarios %}
     <div class="container mb-3 ">
-            <div class="d-flex justify-content-between align-items-center mb-1">
-                <span class="fw-bold text-white" id="nome_usuario">{{comentario.usuario}}</span>
-            </div>
-            <p class="text-secondary small mb-1" id="comentario_usuario">
-                {{comentario.mensagem}}
-            </p>
-            <span class="text-muted" style="font-size: 0.75rem;">Há 2 semanas</span>
+        <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="fw-bold text-white" id="nome_usuario">{{comentario.usuario}}</span>
         </div>
-        {% endfor %}
+        <p class="text-secondary small mb-1" id="comentario_usuario">
+            {{comentario.mensagem}}
+        </p>
+        <span class="text-muted" style="font-size: 0.75rem;">Há 2 semanas</span>
+    </div>
+    {% endfor %}
     {% else %}
-        <div class="container mb-3">
-            <p class="text-secondary small">Nenhuma avaliação encontrada.</p>
-        </div>
+    <div class="container mb-3">
+        <p class="text-secondary small">Nenhuma avaliação encontrada.</p>
+    </div>
     {% endif %}
 </div>
 
